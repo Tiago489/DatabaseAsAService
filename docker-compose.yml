@@ -1,0 +1,19 @@
+version: '3'
+
+#instructions on how docker should compose the services available to the application
+services:
+  #list how to build the web service
+  web:
+    #docker will build the service based on the contents of the ./web directory
+    build: ./web
+    #list of ports the application should be listening to
+    ports:
+      - "5000:5000"
+    # list of services the web service is dependent on
+    links:
+      - db
+
+  #instruction on how to build the db services
+  db:
+    #docker will build the service based on the contents of the ./db directory
+    build: ./db
